@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from api.models import Shipment, Article
+from shipment.models import Shipment, Article
 import csv
 
 

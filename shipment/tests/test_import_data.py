@@ -3,13 +3,13 @@ from django.test import TestCase
 from io import StringIO
 import os
 
-from api.models import Shipment, Article
+from shipment.models import Shipment, Article
 
 
 class ImportDataCommandTestCase(TestCase):
 
     def setUp(self):
-        self.csv_file_path = 'api/test_seed_data.csv'
+        self.csv_file_path = 'test_seed_data.csv'
         with open(self.csv_file_path, 'w') as csv_file:
             csv_file.write(
                 "tracking_number,carrier,sender_address,receiver_address,article_name,article_quantity,article_price,"
