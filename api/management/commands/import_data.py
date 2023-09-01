@@ -39,4 +39,4 @@ class Command(BaseCommand):
                 shipment = get_or_create_shipment(row)
                 create_article(shipment, row)
 
-        print(self.style.SUCCESS('Successfully loaded seed data'))
+        self.stdout.write(self.style.SUCCESS('Successfully import seed data'))
