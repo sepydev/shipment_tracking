@@ -35,11 +35,13 @@ class ShipmentSerializer(serializers.ModelSerializer):
 
 
 class ShipmentWeatherSerializer(serializers.ModelSerializer):
-    articles = ArticleSerializer(many=True, read_only=True)
+    articles = ArticleSerializer(many=True, read_only=True, source='article_set')
+    weather_info = WeatherInfoSerializer(read_only=True)
 
     class Meta:
         model = Shipment
-        fields = ['articles', 'carrier', 'status', 'sender_address', 'receiver_address', ]
+        fields = ['tracking_number', 'carrier', 'status', 'sender_address', 'receiver_address', 'weather_info',
+                  'articles']
 
     def validate(self, data):
         return super().validate(data)

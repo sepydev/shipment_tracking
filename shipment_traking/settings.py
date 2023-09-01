@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # 3d party apps
     'rest_framework',
     'django_filters',
+    'drf_yasg',
 
     # My apps
     'shipment.apps.ShipmentConfig',
@@ -134,4 +135,16 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic',
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'api_version': '1.0',
+    'enabled_methods': ['get', 'post', 'put', 'patch', 'delete'],
+    'PAGINATE_BY': 10,
 }

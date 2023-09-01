@@ -22,6 +22,7 @@ class ShipmentWeatherSerializerTest(TestCase):
             quantity=1,
             price=1000.0,
         )
+        self.shipment.refresh_from_db()
 
     @patch('shipment.serializers.weather_Api.get_weather')
     def test_to_representation(self, mock_get_weather):
@@ -36,6 +37,8 @@ class ShipmentWeatherSerializerTest(TestCase):
         })
         mock_get_weather.return_value = weather_data
         serializer = ShipmentWeatherSerializer(instance=self.shipment)
+
+        self.assertTrue('articles' in serializer.data)
 
         self.assertTrue('weather_info' in serializer.data)
         self.assertEqual(serializer.data['weather_info'], asdict(weather_data))

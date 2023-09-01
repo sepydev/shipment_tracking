@@ -35,13 +35,13 @@ class ShipmentListViewTestCase(TestCase):
         self.assertEqual(len(response.data['results']), 1)
 
     def test_pagination(self):
-        response = self.client.get(self.url, {'offset': 2, 'limit': 1})
+        response = self.client.get(self.url, {'offset': 1, 'limit': 1})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('count', response.data)
         self.assertIn('next', response.data)
         self.assertIn('previous', response.data)
         self.assertIn('results', response.data)
-        self.assertEqual(len(response.data['results']), 2)
+        self.assertEqual(len(response.data['results']), 1)
 
     def test_invalid_filter(self):
         response = self.client.get(self.url, {'tracking_number': 'Invalid'})
