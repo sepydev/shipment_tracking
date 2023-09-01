@@ -13,3 +13,19 @@ Python, Django, Django Rest Framework, SQLite, and Redis.
 ```commandline
 python3 .\manage.py import_data seed_data.csv
 ```
+
+### How to run the application
+
+Run the following command to start the application:
+
+```commandline
+docker compose up --build -d
+```
+
+### How to run the tests
+
+Run the following command to run the tests:
+
+```commandline
+docker compose -f docker-compose.test.yml up  --abort-on-container-exit
+```
