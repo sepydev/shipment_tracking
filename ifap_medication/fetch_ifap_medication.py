@@ -8,26 +8,33 @@ from shipment_tracking import settings
 
 @dataclass
 class MedicineData:
-    pic: str
+    pic: int
     name: str
     description: str
-    manufacturer: str
+    manufacturer_name: str
 
 
-def _parse_xml_to_dict(xml_str, target_key, convert_to_snake_case):
-    return xmltodict.parse(xml_str, )[target_key]
+def _convert_dict_keys_to_snake_case(value: dict) -> dict:
+    return {k.replace('-', '_'): v for k, v in value.items()}
+
+
+def _parse_xml_to_dict(xml_str: str, target_key: str, convert_to_snake_case: bool) -> dict:
+    result = xmltodict.parse(xml_str, )[target_key]
+    if convert_to_snake_case:
+        result = _convert_dict_keys_to_snake_case(result)
+    return result
 
 
 def _map_to_medicine(json_data: dict) -> MedicineData:
     return MedicineData(
-        pic=json_data['pic'],
+        pic=int(json_data['pic']),
         name=json_data['name'],
         description=json_data['description'],
-        manufacturer=json_data['manufacturer'],
+        manufacturer_name=json_data['manufacturer_name'],
     )
 
 
-async def _make_ifap_request(uri, params):
+async def _make_ifap_request(uri: str, params: dict) -> str:
     return _execute_http_post(
         url=f"{settings.IFAP_MEDICATION_SERVICE_BASE_URL}/{uri}",
         params=params
