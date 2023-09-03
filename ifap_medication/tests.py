@@ -82,7 +82,6 @@ async def test_execute_http_post_success(settings):
 
 @pytest.fixture
 def ifab_fixtures(settings, ifap_url, expected_medication_data, snake_case_body, kebab_case_body):
-
     class IfapFixtures:
         SETTINGS = settings
         IFAP_URL = ifap_url
@@ -150,5 +149,5 @@ async def test_fetch_ifap_medication_by_pic_unauthorized(ifab_fixtures):
 @pytest.mark.asyncio
 async def test_fetch_ifap_medication_by_pic_invalid_pic(ifab_fixtures):
     with pytest.raises(Exception):
-        await fetch_ifap_medication_by_pic(pic='123456')
+        await fetch_ifap_medication_by_pic(pic='123456')  # type: ignore
         assert False
