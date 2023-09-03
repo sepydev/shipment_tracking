@@ -4,7 +4,7 @@ from dataclasses import asdict
 from rest_framework import serializers
 
 from shipment.models import Shipment, Article
-from shipment_traking.settings import container
+from shipment_tracking.settings import container
 from weather_info.weather_abstract import WeatherApiABC
 
 weather_Api = container[WeatherApiABC]

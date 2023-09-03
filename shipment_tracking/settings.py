@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'shipment_traking.urls'
+ROOT_URLCONF = 'shipment_tracking.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ CACHES = {
     }
 }
 
-WSGI_APPLICATION = 'shipment_traking.wsgi.application'
+WSGI_APPLICATION = 'shipment_tracking.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
