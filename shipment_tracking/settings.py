@@ -148,3 +148,5 @@ SWAGGER_SETTINGS = {
     'enabled_methods': ['get', 'post', 'put', 'patch', 'delete'],
     'PAGINATE_BY': 10,
 }
+
+IFAP_MEDICATION_SERVICE_BASE_URL = env('IFAP_MEDICATION_SERVICE_BASE_URL')

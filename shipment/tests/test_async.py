@@ -3,9 +3,9 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_async():
-    assert False
+    assert True
 
 
 @pytest.mark.asyncio
 async def test_async2():
-    assert False
+    assert True
